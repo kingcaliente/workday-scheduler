@@ -3,7 +3,6 @@ $('#currentDay').text(today.format('dddd, MMMM D, YYYY h:mm a'));
 
 console.log(today);
 
-
 var saveBtn = $(".saveBtn");
 
 
@@ -20,10 +19,10 @@ function thwomps() {
     var hour = moment().hours();
 
     $(".time-block").each(function() {
-        var currHour = parseInt($(this).attr("id"));
-        if (currHour > hour) {
+        var currentHour = parseInt($(this).attr("id"));
+        if (currentHour > hour) {
             $(this).addClass("future");
-        } else if (currHour === hour) {
+        } else if (currentHour === hour) {
             $(this).addClass("present");
         } else {
             $(this).addClass("past");
@@ -32,15 +31,14 @@ function thwomps() {
 };
 
 
-
 function scheduleRequest() {
 
     $(".hour").each(function() {
-        var currHour = $(this).text();
-        var currPlan = localStorage.getItem(currHour);
+        var timeFrame = $(this).text();
+        var schedule = localStorage.getItem(timeFrame);
 
-        if(currPlan !== null) {
-            $(this).siblings(".plan").val(currPlan);
+        if(schedule !== null) {
+            $(this).siblings(".plan").val(schedule);
         }
     });
 }
